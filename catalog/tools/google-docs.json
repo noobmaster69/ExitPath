@@ -103,6 +103,26 @@
         "Editing from any browser",
         "Google-only spreadsheet functions, Apps Script and Forms"
       ]
+    },
+    {
+      "to": "libera-suite",
+      "fit": 3,
+      "verdict": "Fine for writing alone in Office formats; you give up editing together in a browser.",
+      "import": {
+        "difficulty": 2,
+        "summary": "Export from Google in Office formats, which it edits natively, and open the files locally. Check spreadsheets that use Google-specific functions."
+      },
+      "effortHours": [2, 5],
+      "transfers": [
+        "Documents, spreadsheets and presentations",
+        "Comments and suggestions (as tracked changes)",
+        "Folder structure"
+      ],
+      "lost": [
+        "Real-time collaboration and link sharing",
+        "Editing from any browser",
+        "Google-only spreadsheet functions, Apps Script and Forms"
+      ]
     }
   ],
   "reviewed": "2026-11"
