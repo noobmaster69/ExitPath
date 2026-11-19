@@ -1,0 +1,53 @@
+{
+  "id": "libera-suite",
+  "name": "Libera Suite",
+  "tagline": "Desktop office apps on the Euro-Office editors",
+  "description": "Words, Tables and Slides as desktop apps for Windows, macOS and Linux, with a Visio viewer and a PDF editor. The editors come from Euro-Office, the European fork of ONLYOFFICE, so Office files are edited in their own format. Everything runs locally: no account, no cloud service, no telemetry.",
+  "categories": ["office"],
+  "kind": "desktop",
+  "openness": "open-source",
+  "license": "Apache-2.0 AND AGPL-3.0",
+  "licenseNote": "The desktop host is Apache-2.0; the editor components it downloads (Euro-Office and its patches) are AGPL-3.0. Both are free software and are packaged separately.",
+  "backing": "Abilian, a French free-software company, building on the Euro-Office editors maintained by Nextcloud, IONOS and others",
+  "since": 2026,
+  "maturity": {
+    "score": 2,
+    "rationale": "Public beta since October 2026, at version 0.7 with 1.0 not yet dated. The editors underneath come from the long-established ONLYOFFICE code base, but the packaging around them is new: installers are not yet code-signed, updates are not automatic, and there is no managed deployment for administrators."
+  },
+  "platforms": ["windows", "macos", "linux"],
+  "links": {
+    "website": "https://docs.liberasuite.eu/en/",
+    "source": "https://github.com/abilian/libera-suite",
+    "docs": "https://docs.liberasuite.eu/en/"
+  },
+  "selfHosting": null,
+  "managedHosting": [],
+  "strengths": [
+    "Edits .docx, .xlsx and .pptx in their own format, with the Office-file fidelity of the ONLYOFFICE editors",
+    "Works entirely offline with no account, no subscription and no telemetry",
+    "Installs per user without administrator rights, from an installer, Homebrew, Flatpak or pip",
+    "Can convert documents in bulk from the command line"
+  ],
+  "weaknesses": [
+    "Young: a beta from a single small company, with features and behaviour still changing between releases",
+    "No real-time co-editing; Nextcloud, ownCloud and Seafile storage is planned but not built yet",
+    "No macros and no mail merge",
+    "Installers are not code-signed, so Windows and macOS warn on first launch, and there is no MSI or other deployment tooling for managed fleets yet",
+    "Opens legacy .doc files but cannot save them, and Visio files are view-only"
+  ],
+  "features": {
+    "ms-format-fidelity": "yes",
+    "browser-coediting": "no",
+    "desktop-apps": "yes",
+    "mobile-apps": "no",
+    "track-changes": "yes",
+    "vba-macros": "no",
+    "odf-native": "no"
+  },
+  "featureNotes": {
+    "ms-format-fidelity": "Same editors as ONLYOFFICE",
+    "browser-coediting": "Desktop only; file-platform integration is on the roadmap",
+    "odf-native": "Opens and saves ODF by converting"
+  },
+  "reviewed": "2026-11"
+}

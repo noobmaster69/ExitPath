@@ -100,6 +100,28 @@
         "Power Query, Power Pivot and data-model features",
         "Pixel-identical layout in complex documents"
       ]
+    },
+    {
+      "to": "libera-suite",
+      "fit": 4,
+      "verdict": "For people who work alone on Office files and want a desktop app that keeps them in Office formats.",
+      "import": {
+        "difficulty": 1,
+        "summary": "It edits .docx, .xlsx and .pptx natively, so there is nothing to convert: install it and open your files. Test your most complex documents first, and keep LibreOffice to hand for legacy .doc files, which it opens but cannot save."
+      },
+      "effortHours": [1, 4],
+      "transfers": [
+        "Documents, spreadsheets and presentations, in their original formats",
+        "Tracked changes and comments",
+        "Fonts, images and tables, with Office-style layout"
+      ],
+      "lost": [
+        "All macros",
+        "Mail merge",
+        "Real-time co-authoring",
+        "Power Query, Power Pivot and data-model features",
+        "Saving to the old .doc format"
+      ]
     }
   ],
   "reviewed": "2026-11"
