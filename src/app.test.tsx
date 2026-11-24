@@ -144,10 +144,13 @@ describe('interactions', () => {
       await user.type(screen.getByRole('combobox'), 'zzzzzz')
       expect(screen.getByRole('option')).toHaveTextContent('“zzzzzz” is not covered yet')
       await user.keyboard('{Enter}')
-      expect(open).toHaveBeenCalledWith(
-        'https://github.com/noobmaster69/ExitPath/issues/new?title=Please%20cover%3A%20zzzzzz',
-        '_blank',
-        'noopener,noreferrer',
+      expect(open).toHaveBeenCalledWith(expect.any(String), '_blank', 'noopener,noreferrer')
+      // The issue opens with its title filled in, and a note on what the catalog lists.
+      const url = new URL(open.mock.calls[0]![0] as string)
+      expect(url.origin + url.pathname).toBe('https://github.com/noobmaster69/ExitPath/issues/new')
+      expect(url.searchParams.get('title')).toBe('Please cover: zzzzzz')
+      expect(url.searchParams.get('body')).toMatch(
+        /^<!-- .*proprietary products are not listed as alternatives.* -->\n\n$/,
       )
     } finally {
       open.mockRestore()

@@ -1,7 +1,7 @@
 import { useId, useMemo, useState, type KeyboardEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { search, type ResultKind } from '../lib/search.ts'
-import { issueUrl } from '../lib/site.ts'
+import { requestUrl } from '../lib/site.ts'
 import { IconArrowRight, IconExternal, IconSearch } from './icons.tsx'
 
 const KIND_LABEL: Record<ResultKind, string> = {
@@ -40,7 +40,7 @@ export function SearchBox({
 
   // Nothing found: the one thing left to offer is a way to ask for it.
   function ask() {
-    window.open(issueUrl(`Please cover: ${wanted}`), '_blank', 'noopener,noreferrer')
+    window.open(requestUrl(wanted), '_blank', 'noopener,noreferrer')
   }
 
   function go(href: string) {

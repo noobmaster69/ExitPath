@@ -6,7 +6,7 @@ import { EmptyState, ExternalLink, IndexRow, OpennessBadge, Page, ScoreBadge } f
 import { nameList } from '../lib/names.ts'
 import { scoredPathsFrom } from '../lib/paths.ts'
 import { tokenize } from '../lib/search.ts'
-import { issueUrl } from '../lib/site.ts'
+import { requestUrl } from '../lib/site.ts'
 import { setPrefs, usePrefs, useSituation } from '../lib/storage.ts'
 import { useTitle } from '../lib/use-title.ts'
 
@@ -174,7 +174,7 @@ export function Browse() {
       {count === 0 ? (
         <EmptyState title="Nothing matches those filters">
           Clear a filter to see more, or{' '}
-          <ExternalLink href={issueUrl('Please cover: ')}>ask for something to be added</ExternalLink>.
+          <ExternalLink href={requestUrl()}>ask for something to be added</ExternalLink>.
         </EmptyState>
       ) : (
         <ul className="mt-1 gap-x-14 md:columns-2">
