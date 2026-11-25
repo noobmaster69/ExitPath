@@ -2,7 +2,7 @@
   "id": "baserow",
   "name": "Baserow",
   "tagline": "An Airtable-style database you can host",
-  "description": "A no-code database that follows Airtable's shape closely: tables of typed fields, linked records, views, forms and an application builder on top. It is the only project here with an importer that reads an Airtable base directly. Several of the views and all of the permission features that teams expect are in the paid tiers.",
+  "description": "A no-code database that follows Airtable's shape closely: tables of typed fields, linked records, views, forms and an application builder on top. Of the options here it is the one an Airtable user will recognise fastest. Several of the views and all of the permission features that teams expect are in the paid tiers.",
   "categories": ["spreadsheets"],
   "kind": "server",
   "openness": "open-core",

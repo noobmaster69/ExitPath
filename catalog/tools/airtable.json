@@ -45,7 +45,7 @@
     {
       "to": "baserow",
       "fit": 4,
-      "verdict": "The shortest move, because it is the only option with a real Airtable importer and the interface is familiar. Check which views and permissions you need first: several of them are paid tiers.",
+      "verdict": "The shortest move if you want the interface to stay familiar, since Baserow keeps Airtable's shape closely. Check which views and permissions you need first: several of them are paid tiers.",
       "import": {
         "difficulty": 2,
         "summary": "Baserow imports a base from an Airtable public share link, bringing tables, fields, rows and files, and writes a report table listing what it could not map. Field types that have no equivalent arrive as text, so check them afterwards.",
@@ -74,22 +74,28 @@
     {
       "to": "grist",
       "fit": 4,
-      "verdict": "The better destination if your base is really a relational spreadsheet, or if you need row-level access control. You will pay for it in migration work: there is no importer, and every formula gets rewritten in Python.",
+      "verdict": "The better destination if your base is really a relational spreadsheet, or if you need row-level access control. The data comes over intact; the work is rewriting formulas in Python and rebuilding anything you had in Interfaces.",
       "import": {
-        "difficulty": 4,
-        "summary": "There is no Airtable importer. Export each table to CSV and import them one at a time, then recreate reference columns, formulas and page layouts by hand. Reading the base's schema through Airtable's API first is worth the effort on anything large, because CSV does not record field types."
+        "difficulty": 2,
+        "summary": "Grist connects to Airtable and imports a base table by table, keeping attachments and the references between tables rather than flattening them to names. Linked record fields become Reference columns and Airtable's select colours map to Grist choices. Formula columns are not translated: they arrive as comments on the column, which is the text you work from when rewriting them in Python. On a self-hosted instance the connector has to be switched on with OAuth credentials first, or you use a personal access token.",
+        "links": [
+          {
+            "label": "Importing from Airtable into Grist",
+            "url": "https://support.getgrist.com/imports/"
+          }
+        ]
       },
-      "effortHours": [6, 30],
+      "effortHours": [2, 14],
       "transfers": [
-        "Table data and field values, through CSV per table",
-        "Relationships, once you recreate them as reference columns",
-        "Attachments, after downloading them from Airtable and re-uploading"
+        "Tables, fields and rows, with field types mapped rather than guessed",
+        "References between tables, as Reference and Reference List columns",
+        "Attachments, pulled across by the importer",
+        "Choice fields, with their Airtable colours"
       ],
       "lost": [
-        "Formulas, rollups and lookups, which are rewritten as Python",
-        "Automations and Interfaces",
-        "View configuration, filters and colour rules",
-        "Field types, which CSV does not carry and you reapply by hand",
+        "Formulas, rollups and lookups: the expression arrives as a column comment and is rewritten in Python",
+        "Views, forms and Interfaces, which the importer does not cover",
+        "Automations, which have no equivalent in the open-source core",
         "Record comments and revision history"
       ]
     }

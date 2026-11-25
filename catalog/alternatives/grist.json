@@ -54,11 +54,12 @@
     "A genuine relational model: reference columns, lookups and summary tables instead of copied values",
     "Access rules down to individual rows and columns, and they are in the open-source core rather than a paid tier",
     "Each document is one SQLite file: backup is a file copy, and you can query it outside Grist",
-    "Self-hosting is a single container with no separate database to run"
+    "Self-hosting is a single container with no separate database to run",
+    "An Airtable importer that connects to the base directly and keeps attachments and the links between tables"
   ],
   "weaknesses": [
     "Open-core: single sign-on, admin controls, automations and email notifications need the paid Enterprise edition, which is the usual reason teams end up paying",
-    "No importer for Airtable or other database tools, so moving a base means CSV per table and rebuilding links, formulas and views by hand",
+    "The Airtable importer needs OAuth credentials configured on a self-hosted instance before it appears, which is fiddly for a one-off migration; a personal access token is the fallback",
     "No native mobile apps; the web app works on a phone but is uncomfortable for editing",
     "Python formulas are more capable than spreadsheet functions and less familiar, so anyone expecting Excel syntax has something to learn",
     "A smaller community than the incumbents, with fewer templates, integrations and people to ask",
@@ -71,14 +72,14 @@
     "forms": "yes",
     "access-rules": "yes",
     "api": "yes",
-    "airtable-import": "no",
+    "airtable-import": "yes",
     "free-sso": "no",
     "local-file": "yes"
   },
   "featureNotes": {
     "formulas": "Python, with spreadsheet-style functions available",
     "views": "Grid, card, chart and calendar widgets arranged on pages",
-    "airtable-import": "CSV, XLSX and Google Sheets import only",
+    "airtable-import": "Connects to the base and keeps attachments and links; needs OAuth credentials set when self-hosted",
     "free-sso": "OIDC and SAML are in the paid edition; the core accepts a proxy-forwarded header",
     "local-file": "A document is a SQLite file you can download whole"
   },
