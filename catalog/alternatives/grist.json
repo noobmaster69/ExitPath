@@ -1,0 +1,87 @@
+{
+  "id": "grist",
+  "name": "Grist",
+  "tagline": "A relational spreadsheet with Python formulas",
+  "description": "A spreadsheet built on a real relational model: tables reference each other, formulas are written in Python, and pages combine grid, card, chart and calendar widgets over the same data. Each document is a single SQLite file, which you can download and open with ordinary database tools. Access rules can restrict individual rows and columns rather than whole documents.",
+  "categories": ["spreadsheets"],
+  "kind": "server",
+  "openness": "open-core",
+  "license": "Apache-2.0",
+  "licenseNote": "grist-core is Apache-2.0 and is a complete, usable Grist on its own. Single sign-on (OIDC and SAML), SCIM provisioning, admin controls, audit log streaming, automations and email notifications are only in the paid Enterprise edition, which runs on a 30-day trial and then needs an activation key. Grist Labs gives free activation keys to individuals and to organisations with under $1 million in annual income, so the paid tier bites hardest on larger organisations.",
+  "backing": "Grist Labs, a self-funded company founded in 2014, paid for by its hosted service and Enterprise licences; the French government's ANCT and DINUM contribute both code and funding.",
+  "since": 2021,
+  "maturity": {
+    "score": 4,
+    "rationale": "Grist Labs has worked on it since 2014 and released the source in July 2021, with steady releases since. It is used in production by French public administrations, which also fund development, so the project does not rest on one company alone. The team is small."
+  },
+  "platforms": ["web", "windows", "macos", "linux"],
+  "links": {
+    "website": "https://www.getgrist.com",
+    "source": "https://github.com/gristlabs/grist-core",
+    "docs": "https://support.getgrist.com/self-managed/"
+  },
+  "selfHosting": {
+    "difficulty": 2,
+    "summary": "One container, a volume for the documents and a session secret. It stores documents as SQLite files by default, so there is no database to run; PostgreSQL is optional and only holds accounts and sharing. The part that catches people is sign-in: the open-source core has no password handling of its own, so you either put it behind a proxy that sets a header or rely on the paid edition for OIDC and SAML.",
+    "setupHours": [1, 4],
+    "requirements": {
+      "ram": "1 GB for one person; Grist suggests 8 GB for moderate team use",
+      "cpu": "1 core, 2 for moderate team use",
+      "notes": "Documents are SQLite files on a persistent volume. PostgreSQL is optional. Set GRIST_SESSION_SECRET, and plan how users will sign in."
+    },
+    "deploy": [
+      {
+        "kind": "docker-compose",
+        "label": "Self-managed installation guide",
+        "url": "https://support.getgrist.com/self-managed/"
+      },
+      {
+        "kind": "guide",
+        "label": "First-run setup and choosing an edition",
+        "url": "https://support.getgrist.com/install/first-run-setup/"
+      }
+    ]
+  },
+  "managedHosting": [
+    {
+      "label": "Grist hosted service",
+      "url": "https://www.getgrist.com/pricing/",
+      "note": "Run by Grist Labs; free personal tier, paid per user for teams"
+    }
+  ],
+  "strengths": [
+    "Formulas are Python, so anything you can express in code you can put in a cell, including across tables",
+    "A genuine relational model: reference columns, lookups and summary tables instead of copied values",
+    "Access rules down to individual rows and columns, and they are in the open-source core rather than a paid tier",
+    "Each document is one SQLite file: backup is a file copy, and you can query it outside Grist",
+    "Self-hosting is a single container with no separate database to run",
+    "An Airtable importer that connects to the base directly and keeps attachments and the links between tables"
+  ],
+  "weaknesses": [
+    "Open-core: single sign-on, admin controls, automations and email notifications need the paid Enterprise edition, which is the usual reason teams end up paying",
+    "The Airtable importer needs OAuth credentials configured on a self-hosted instance before it appears, which is fiddly for a one-off migration; a personal access token is the fallback",
+    "No native mobile apps; the web app works on a phone but is uncomfortable for editing",
+    "Python formulas are more capable than spreadsheet functions and less familiar, so anyone expecting Excel syntax has something to learn",
+    "A smaller community than the incumbents, with fewer templates, integrations and people to ask",
+    "The desktop build is a separate project aimed at local documents, not a full offline version of a team instance"
+  ],
+  "features": {
+    "relational-links": "yes",
+    "formulas": "yes",
+    "views": "yes",
+    "forms": "yes",
+    "access-rules": "yes",
+    "api": "yes",
+    "airtable-import": "yes",
+    "free-sso": "no",
+    "local-file": "yes"
+  },
+  "featureNotes": {
+    "formulas": "Python, with spreadsheet-style functions available",
+    "views": "Grid, card, chart and calendar widgets arranged on pages",
+    "airtable-import": "Connects to the base and keeps attachments and links; needs OAuth credentials set when self-hosted",
+    "free-sso": "OIDC and SAML are in the paid edition; the core accepts a proxy-forwarded header",
+    "local-file": "A document is a SQLite file you can download whole"
+  },
+  "reviewed": "2026-11"
+}
