@@ -495,6 +495,54 @@
     ]
   },
   {
+    "id": "spreadsheets",
+    "name": "Spreadsheets and databases",
+    "description": "Relational spreadsheets and no-code databases",
+    "features": [
+      {
+        "id": "relational-links",
+        "name": "Links between tables",
+        "hint": "Reference rows in another table, with lookups, instead of copying values between sheets"
+      },
+      {
+        "id": "formulas",
+        "name": "Formulas in cells",
+        "hint": "A general formula language, not only a set of pre-built computed field types"
+      },
+      {
+        "id": "views",
+        "name": "Grid, card, kanban and calendar views"
+      },
+      {
+        "id": "forms",
+        "name": "Built-in forms for data entry"
+      },
+      {
+        "id": "access-rules",
+        "name": "Row and column level access rules",
+        "hint": "Decide who sees which rows and fields, without keeping a separate copy of the data"
+      },
+      {
+        "id": "api",
+        "name": "REST API"
+      },
+      {
+        "id": "airtable-import",
+        "name": "Imports from Airtable"
+      },
+      {
+        "id": "free-sso",
+        "name": "SSO in the free edition",
+        "hint": "SAML or OpenID Connect without a paid licence"
+      },
+      {
+        "id": "local-file",
+        "name": "The document is a file you hold",
+        "hint": "Download a whole base as one file that opens without the server"
+      }
+    ]
+  },
+  {
     "id": "identity",
     "name": "Identity and single sign-on",
     "description": "Company accounts, single sign-on (SSO), multi-factor sign-in and user provisioning",

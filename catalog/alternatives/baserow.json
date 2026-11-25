@@ -1,0 +1,85 @@
+{
+  "id": "baserow",
+  "name": "Baserow",
+  "tagline": "An Airtable-style database you can host",
+  "description": "A no-code database that follows Airtable's shape closely: tables of typed fields, linked records, views, forms and an application builder on top. It is the only project here with an importer that reads an Airtable base directly. Several of the views and all of the permission features that teams expect are in the paid tiers.",
+  "categories": ["spreadsheets"],
+  "kind": "server",
+  "openness": "open-core",
+  "license": "MIT",
+  "licenseNote": "The core is MIT. The premium and enterprise directories of the repository are under Baserow's own licence and need a paid key: kanban, calendar and timeline views, personal views, row comments and colouring are premium; role-based permissions, audit logs and single sign-on are enterprise. Self-hosting the MIT core is unrestricted.",
+  "backing": "Baserow BV, a company in the Netherlands founded in 2020, funded by its hosted service and paid self-hosted licences.",
+  "since": 2020,
+  "maturity": {
+    "score": 3,
+    "rationale": "Released regularly since 2020 with a company behind it and a large installed base of self-hosters. Younger than most of this catalog, and the division between the free core and the paid tiers has moved over time, which is worth watching if you depend on a feature near the line."
+  },
+  "platforms": ["web"],
+  "links": {
+    "website": "https://baserow.io",
+    "source": "https://github.com/baserow/baserow",
+    "docs": "https://baserow.io/docs"
+  },
+  "selfHosting": {
+    "difficulty": 3,
+    "summary": "An all-in-one container exists and is the quickest way in, but a production setup is the usual multi-service stack: PostgreSQL, Redis, a backend, a frontend and a reverse proxy. Nothing exotic, just more moving parts to back up and upgrade than a single-file tool.",
+    "setupHours": [2, 6],
+    "requirements": {
+      "ram": "2 GB",
+      "cpu": "2 cores",
+      "notes": "Needs PostgreSQL and Redis. The all-in-one image bundles them for small installs; separate services are recommended for production."
+    },
+    "deploy": [
+      {
+        "kind": "docker-compose",
+        "label": "Install with Docker Compose",
+        "url": "https://baserow.io/docs/installation%2Finstall-with-docker-compose"
+      },
+      {
+        "kind": "installer",
+        "label": "All-in-one Docker image",
+        "url": "https://baserow.io/docs/installation%2Finstall-with-docker"
+      }
+    ]
+  },
+  "managedHosting": [
+    {
+      "label": "Baserow Cloud",
+      "url": "https://baserow.io/pricing",
+      "note": "Run by the developers; free tier with row and storage limits"
+    }
+  ],
+  "strengths": [
+    "An Airtable importer that reads a public base share link and brings tables, fields and files across",
+    "The interface is close enough to Airtable that most people need no retraining",
+    "Forms, a REST API and webhooks in the free core",
+    "An all-in-one container makes a first install quick"
+  ],
+  "weaknesses": [
+    "Kanban, calendar and timeline views are premium, so a team that lives in a kanban board pays or does without",
+    "Role-based permissions are an Advanced-tier feature and single sign-on is enterprise, which rules out the free core for many organisations",
+    "Formulas are per-field expressions rather than a general formula language, so complex calculations are more awkward than in a spreadsheet",
+    "Requires PostgreSQL and Redis: more to run and back up than a single-file document",
+    "No offline use and no native mobile apps"
+  ],
+  "features": {
+    "relational-links": "yes",
+    "formulas": "yes",
+    "views": "partial",
+    "forms": "yes",
+    "access-rules": "no",
+    "api": "yes",
+    "airtable-import": "yes",
+    "free-sso": "no",
+    "local-file": "no"
+  },
+  "featureNotes": {
+    "formulas": "Formula fields, not a spreadsheet formula language",
+    "views": "Grid and gallery in the core; kanban, calendar and timeline are premium",
+    "access-rules": "Per-workspace roles only in the core; role-based permissions are a paid tier",
+    "airtable-import": "From a public base share link, with a report of what did not come across",
+    "free-sso": "SAML and OIDC are enterprise-only",
+    "local-file": "Stored in PostgreSQL; exports to CSV and Excel"
+  },
+  "reviewed": "2026-11"
+}

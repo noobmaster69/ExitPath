@@ -1,0 +1,98 @@
+{
+  "id": "airtable",
+  "name": "Airtable",
+  "vendor": "Airtable",
+  "category": "spreadsheets",
+  "alsoCovers": ["Airtable Interfaces"],
+  "summary": "A database that looks like a spreadsheet: typed fields, linked records, views, forms and automations, with small applications built on top in Interfaces.",
+  "lockIn": {
+    "level": 4,
+    "factors": [
+      "Formulas, rollups and lookups are Airtable's own and have no equivalent elsewhere",
+      "Interfaces and automations are rebuilt from nothing anywhere else: there is no format to carry them in",
+      "Attachments sit on Airtable's storage behind URLs that stop working hours after an export",
+      "Colleagues' bookmarked views, embedded forms and shared links all break on the same day",
+      "Scripting extensions and API calls get woven into other teams' workflows, often without anyone recording where"
+    ]
+  },
+  "export": {
+    "difficulty": 3,
+    "summary": "A view exports to CSV in one click and the API returns full records as JSON, so getting the values out is not the problem. What does not come out is the structure: field types, relationships, formulas, views, forms, automations and Interfaces.",
+    "methods": [
+      {
+        "name": "CSV per view",
+        "detail": "Download a table as CSV from a grid view. Hidden fields are left out, so make every field visible first. There is no single action that exports a whole base."
+      },
+      {
+        "name": "REST API",
+        "detail": "Fetch records, field types and table structure as JSON. This is the only way to capture a base's schema, and it needs a personal access token and a script.",
+        "url": "https://airtable.com/developers/web/api/introduction"
+      },
+      {
+        "name": "Base snapshots and duplication",
+        "detail": "Snapshots and duplicates restore a base inside Airtable. They are useful before a migration and are not a portable export."
+      }
+    ],
+    "caveats": [
+      "Attachment URLs in an export expire within a few hours: download the files straight away or they are gone",
+      "Formulas, rollups and lookups export as the values they currently show, not as formulas",
+      "Linked records export as record names, so relationships have to be matched up again on the other side",
+      "Record comments, field descriptions and anything held in extensions are not in a CSV export",
+      "Interfaces, automations, view filters and colour rules are not exported in any format"
+    ]
+  },
+  "paths": [
+    {
+      "to": "baserow",
+      "fit": 4,
+      "verdict": "The shortest move, because it is the only option with a real Airtable importer and the interface is familiar. Check which views and permissions you need first: several of them are paid tiers.",
+      "import": {
+        "difficulty": 2,
+        "summary": "Baserow imports a base from an Airtable public share link, bringing tables, fields, rows and files, and writes a report table listing what it could not map. Field types that have no equivalent arrive as text, so check them afterwards.",
+        "links": [
+          {
+            "label": "Import an Airtable base into Baserow",
+            "url": "https://baserow.io/user-docs/import-airtable-to-baserow"
+          }
+        ]
+      },
+      "effortHours": [2, 12],
+      "transfers": [
+        "Tables, fields and rows from a share link",
+        "Linked records between imported tables",
+        "Attachments, unless you skip files to speed the import up",
+        "Grid views and the basics of their configuration"
+      ],
+      "lost": [
+        "Automations, which have to be rebuilt as Baserow automations or webhooks",
+        "Interfaces: there is no equivalent to import into",
+        "Formulas, rollups and lookups, which need rewriting as Baserow formula fields",
+        "Kanban, calendar and timeline views unless you pay for premium",
+        "Record comments and revision history"
+      ]
+    },
+    {
+      "to": "grist",
+      "fit": 4,
+      "verdict": "The better destination if your base is really a relational spreadsheet, or if you need row-level access control. You will pay for it in migration work: there is no importer, and every formula gets rewritten in Python.",
+      "import": {
+        "difficulty": 4,
+        "summary": "There is no Airtable importer. Export each table to CSV and import them one at a time, then recreate reference columns, formulas and page layouts by hand. Reading the base's schema through Airtable's API first is worth the effort on anything large, because CSV does not record field types."
+      },
+      "effortHours": [6, 30],
+      "transfers": [
+        "Table data and field values, through CSV per table",
+        "Relationships, once you recreate them as reference columns",
+        "Attachments, after downloading them from Airtable and re-uploading"
+      ],
+      "lost": [
+        "Formulas, rollups and lookups, which are rewritten as Python",
+        "Automations and Interfaces",
+        "View configuration, filters and colour rules",
+        "Field types, which CSV does not carry and you reapply by hand",
+        "Record comments and revision history"
+      ]
+    }
+  ],
+  "reviewed": "2026-11"
+}
